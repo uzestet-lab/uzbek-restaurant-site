@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uzbek Restaurant Bali</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg1:#0f1a2b;
+  --bg2:#14253d;
+  --gold:#c6a75e;
+}
+
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,var(--bg1),var(--bg2));
+  font-family:'Inter',sans-serif;
+  color:#fff;
+  text-align:center;
+  overflow:hidden;
+}
+
+/* Тонкий орнамент */
+body:before, body:after{
+  content:"";
+  position:absolute;
+  width:260px;
+  height:260px;
+  border:1px solid rgba(198,167,94,0.12);
+  border-radius:50%;
+}
+body:before{top:-130px; left:-130px;}
+body:after{bottom:-130px; right:-130px;}
+
+.container{
+  max-width:520px;
+  padding:60px 35px;
+  animation:fadeIn 1.2s ease;
+}
+
+h1{
+  font-family:'Playfair Display',serif;
+  font-size:32px;
+  letter-spacing:1.5px;
+  margin-bottom:10px;
+}
+
+.gold-line{
+  width:70px;
+  height:1px;
+  background:var(--gold);
+  margin:18px auto 30px;
+  opacity:0.7;
+}
+
+.lang-switch{
+  margin-bottom:30px;
+}
+
+.lang-switch button{
+  background:none;
+  border:1px solid var(--gold);
+  color:#fff;
+  padding:7px 14px;
+  margin:0 6px;
+  cursor:pointer;
+  border-radius:20px;
+  font-size:12px;
+  transition:0.3s;
+}
+
+.lang-switch button.active,
+.lang-switch button:hover{
+  background:var(--gold);
+  color:var(--bg1);
+}
+
+.text{
+  font-size:15px;
+  line-height:1.9;
+  margin-bottom:40px;
+  opacity:0;
+  animation:fadeText 0.6s forwards;
+}
+
+.button{
+  display:block;
+  padding:15px;
+  margin-bottom:18px;
+  border:1px solid var(--gold);
+  border-radius:8px;
+  text-decoration:none;
+  color:#fff;
+  transition:all .3s ease;
+  font-size:15px;
+  letter-spacing:0.4px;
+}
+
+.button:hover{
+  background:var(--gold);
+  color:var(--bg1);
+  box-shadow:0 0 20px rgba(198,167,94,0.35);
+}
+
+.footer{
+  margin-top:35px;
+  font-size:13px;
+  opacity:0.7;
+  letter-spacing:1px;
+}
+
+.hidden{
+  display:none;
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(10px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+@keyframes fadeText{
+  from{opacity:0; transform:translateY(5px);}
+  to{opacity:1; transform:translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>Uzbek Restaurant Bali</h1>
+  <div class="gold-line"></div>
+
+  <div class="lang-switch">
+    <button onclick="setLang('en')" id="btn-en" class="active">EN</button>
+    <button onclick="setLang('ru')" id="btn-ru">RU</button>
+    <button onclick="setLang('id')" id="btn-id">ID</button>
+  </div>
+
+  <!-- English -->
+  <div id="en" class="text">
+    Thank you sincerely for visiting our restaurant.<br><br>
+    If your experience was enjoyable, we would be grateful for an honest review — it helps future guests discover us.<br><br>
+    You are warmly invited to follow us on Instagram or contact the restaurant manager directly.
+  </div>
+
+  <!-- Russian -->
+  <div id="ru" class="text hidden">
+    Искренне благодарим вас за визит в наш ресторан.<br><br>
+    Если вам понравилось, будем признательны за честный отзыв — это помогает другим гостям лучше узнать о нашем месте.<br><br>
+    Вы также можете поддержать нас подпиской в Instagram или связаться напрямую с управляющим ресторана.
+  </div>
+
+  <!-- Indonesian -->
+  <div id="id" class="text hidden">
+    Terima kasih dengan tulus atas kunjungan Anda ke restoran kami.<br><br>
+    Jika pengalaman Anda menyenangkan, kami akan sangat menghargai ulasan yang jujur — ini membantu tamu lain menemukan kami.<br><br>
+    Anda juga dipersilakan mengikuti Instagram kami atau menghubungi manajer restoran secara langsung.
+  </div>
+
+  <a class="button" href="https://maps.app.goo.gl/bbbar62r5L8fCAz87" target="_blank">
+    Google Review
+  </a>
+
+  <a class="button" href="https://www.instagram.com/uzbek_restaurant_bali" target="_blank">
+    Instagram
+  </a>
+
+  <a class="button" href="https://wa.me/6282145823322" target="_blank">
+    Contact Manager (WhatsApp)
+  </a>
+
+  <div class="footer">
+    With warmth and respect
+  </div>
+
+</div>
+
+<script>
+function setLang(lang){
+  ['en','ru','id'].forEach(l=>{
+    document.getElementById(l).classList.add('hidden');
+    document.getElementById('btn-'+l).classList.remove('active');
+  });
+  document.getElementById(lang).classList.remove('hidden');
+  document.getElementById('btn-'+lang).classList.add('active');
+}
+</script>
+
+</body>
+</html>
