@@ -41,13 +41,31 @@ overflow-x:hidden;
 width:100%;
 max-width:430px;
 text-align:center;
-opacity:0;
-animation:pageReveal 1.4s ease forwards;
 }
 
-@keyframes pageReveal{
-from{opacity:0;transform:translateY(20px);}
-to{opacity:1;transform:translateY(0);}
+.logo,.title,.line,.langs,.text,.btn,.wifi,.footer{
+opacity:0;
+transform:translateY(-18px);
+animation:dropFade 1s ease forwards;
+}
+
+.logo{animation-delay:.2s;}
+.title{animation-delay:.6s;}
+.line{animation-delay:.95s;}
+.langs{animation-delay:1.25s;}
+.text{animation-delay:1.6s;}
+#btn1{animation-delay:2.1s;}
+#btn2{animation-delay:2.35s;}
+#btn3{animation-delay:2.6s;}
+#btn4{animation-delay:2.85s;}
+.wifi{animation-delay:3.15s;}
+.footer{animation-delay:3.45s;}
+
+@keyframes dropFade{
+to{
+opacity:1;
+transform:translateY(0);
+}
 }
 
 .logo{
@@ -66,7 +84,7 @@ height:100%;
 object-fit:cover;
 }
 
-h1{
+.title{
 font-family:'Playfair Display',serif;
 font-size:30px;
 line-height:1.2;
@@ -109,7 +127,6 @@ font-size:15px;
 line-height:1.9;
 margin-bottom:22px;
 min-height:165px;
-opacity:.95;
 display:none;
 }
 
@@ -190,7 +207,7 @@ padding-bottom:20px;
 }
 
 @media(max-width:430px){
-h1{font-size:28px;}
+.title{font-size:28px;}
 .text{font-size:14px;}
 .logo{width:84px;height:84px;}
 }
@@ -205,7 +222,7 @@ h1{font-size:28px;}
 <img src="Untitled design.png" alt="logo">
 </div>
 
-<h1>UzBek Restaurant Bali</h1>
+<div class="title">UzBek Restaurant Bali</div>
 
 <div class="line"></div>
 
@@ -251,10 +268,8 @@ Anda dapat menghubungi manajer bila diperlukan.
 
 <div class="wifi">
 <div id="wifiTitle" class="wtitle">Guest WiFi</div>
-
 <div class="meta">Network</div>
 <div class="value">Uz&Bek Restoran</div>
-
 <div class="meta">Password</div>
 <div class="value">12345678</div>
 </div>
@@ -272,7 +287,6 @@ id:["Menu","Google Maps","Instagram","Hubungi Manajer","WiFi Tamu","DENGAN HANGA
 };
 
 function setLang(lang){
-
 var arr=["uz","ru","en","id"];
 
 for(var i=0;i<arr.length;i++){
