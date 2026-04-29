@@ -21,8 +21,6 @@ margin:0;
 padding:0;
 box-sizing:border-box;
 -webkit-tap-highlight-color:transparent;
--webkit-user-select:none;
-user-select:none;
 }
 
 body{
@@ -44,11 +42,11 @@ width:100%;
 max-width:430px;
 text-align:center;
 opacity:0;
-animation:pageReveal 1.6s ease forwards;
+animation:pageReveal 1.4s ease forwards;
 }
 
 @keyframes pageReveal{
-from{opacity:0;transform:translateY(26px);}
+from{opacity:0;transform:translateY(20px);}
 to{opacity:1;transform:translateY(0);}
 }
 
@@ -59,8 +57,7 @@ margin:8px auto 18px;
 border-radius:50%;
 overflow:hidden;
 border:1px solid var(--line);
-box-shadow:0 0 18px rgba(199,165,106,.10);
-animation:fadeDown .9s ease forwards;
+box-shadow:0 0 18px rgba(199,165,106,.12);
 }
 
 .logo img{
@@ -74,9 +71,6 @@ font-family:'Playfair Display',serif;
 font-size:30px;
 line-height:1.2;
 margin-bottom:12px;
-opacity:0;
-animation:fadeDown .9s ease forwards;
-animation-delay:.2s;
 }
 
 .line{
@@ -84,9 +78,6 @@ width:82px;
 height:1px;
 margin:0 auto 22px;
 background:linear-gradient(90deg,transparent,var(--gold),transparent);
-opacity:0;
-animation:fadeDown .9s ease forwards;
-animation-delay:.35s;
 }
 
 .langs{
@@ -95,9 +86,6 @@ justify-content:center;
 gap:8px;
 flex-wrap:wrap;
 margin-bottom:18px;
-opacity:0;
-animation:fadeDown .9s ease forwards;
-animation-delay:.5s;
 }
 
 .langs button{
@@ -122,15 +110,7 @@ line-height:1.9;
 margin-bottom:22px;
 min-height:165px;
 opacity:.95;
-animation:fadeDown .9s ease forwards;
-animation-delay:.7s;
-}
-
-.hidden{display:none;}
-
-@keyframes fadeDown{
-from{opacity:0;transform:translateY(-14px);}
-to{opacity:1;transform:translateY(0);}
+display:none;
 }
 
 .btn{
@@ -147,21 +127,6 @@ font-weight:500;
 transition:.22s ease;
 position:relative;
 overflow:hidden;
-opacity:0;
-transform:translateY(-14px);
-animation:btnIn .9s ease forwards;
-}
-
-#btn1{animation-delay:1.0s;}
-#btn2{animation-delay:1.2s;}
-#btn3{animation-delay:1.4s;}
-#btn4{animation-delay:1.6s;}
-
-@keyframes btnIn{
-to{
-opacity:1;
-transform:translateY(0);
-}
 }
 
 .btn::before{
@@ -171,7 +136,7 @@ top:0;
 left:-120%;
 width:45%;
 height:100%;
-background:linear-gradient(90deg,transparent,rgba(231,211,166,.12),transparent);
+background:linear-gradient(90deg,transparent,rgba(231,211,166,.10),transparent);
 animation:goldSweep 5s linear infinite;
 }
 
@@ -193,9 +158,6 @@ padding:20px;
 border-radius:18px;
 border:1px solid var(--line);
 background:rgba(255,255,255,.03);
-opacity:0;
-animation:fadeDown .9s ease forwards;
-animation-delay:1.85s;
 }
 
 .wtitle{
@@ -225,8 +187,6 @@ font-size:12px;
 opacity:.5;
 letter-spacing:1.5px;
 padding-bottom:20px;
-animation:fadeDown .9s ease forwards;
-animation-delay:2s;
 }
 
 @media(max-width:430px){
@@ -256,28 +216,28 @@ h1{font-size:28px;}
 <button id="bid" onclick="setLang('id')">ID</button>
 </div>
 
-<div id="uz" class="text hidden">
+<div id="uz" class="text">
 Restoranimizga tashrif buyurganingiz uchun rahmat.<br><br>
 Agar sizga yoqqan bo‘lsa, Google Maps’da sharh qoldirsangiz minnatdor bo‘lamiz.<br><br>
 Instagram sahifamizga obuna bo‘lishingizdan mamnun bo‘lamiz.<br><br>
-Zarurat bo‘lsa menejer bilan bog‘lanishingiz mumkin.
+Zarurat bo‘lsa boshqaruvchi bilan bog'lanishingiz mumkin.
 </div>
 
-<div id="ru" class="text hidden">
+<div id="ru" class="text">
 Благодарим вас за визит в наш ресторан.<br><br>
 Если вам понравилось, будем признательны за отзыв в Google Картах.<br><br>
 Будем рады вашей подписке на Instagram.<br><br>
 При необходимости вы можете связаться с управляющим.
 </div>
 
-<div id="en" class="text hidden">
+<div id="en" class="text">
 Thank you for visiting our restaurant.<br><br>
 If you enjoyed your experience, we would appreciate your review on Google Maps.<br><br>
 We would be delighted if you follow us on Instagram.<br><br>
 You may contact the manager if needed.
 </div>
 
-<div id="id" class="text hidden">
+<div id="id" class="text">
 Terima kasih telah mengunjungi restoran kami.<br><br>
 Jika Anda puas, kami akan menghargai ulasan Anda di Google Maps.<br><br>
 Kami senang jika Anda mengikuti Instagram kami.<br><br>
@@ -305,7 +265,7 @@ Anda dapat menghubungi manajer bila diperlukan.
 
 <script>
 var labels={
-uz:[uz:["Menyu","Google Maps","Instagram","Boshqaruvchi bilan bog'lanish","Mehmon WiFi","MEHR VA HURMAT ILA"],
+uz:["Menyu","Google Maps","Instagram","Boshqaruvchi bilan bog'lanish","Mehmon WiFi","MEHR VA HURMAT ILA"],
 ru:["Меню","Google Карты","Instagram","Связаться с управляющим","WiFi для гостей","С ТЕПЛОМ И УВАЖЕНИЕМ"],
 en:["Menu","Google Maps","Instagram","Contact Manager","Guest WiFi","WITH WARMTH & RESPECT"],
 id:["Menu","Google Maps","Instagram","Hubungi Manajer","WiFi Tamu","DENGAN HANGAT & HORMAT"]
@@ -316,11 +276,11 @@ function setLang(lang){
 var arr=["uz","ru","en","id"];
 
 for(var i=0;i<arr.length;i++){
-document.getElementById(arr[i]).classList.add("hidden");
+document.getElementById(arr[i]).style.display="none";
 document.getElementById("b"+arr[i]).classList.remove("active");
 }
 
-document.getElementById(lang).classList.remove("hidden");
+document.getElementById(lang).style.display="block";
 document.getElementById("b"+lang).classList.add("active");
 
 document.getElementById("btn1").innerHTML=labels[lang][0];
@@ -331,16 +291,14 @@ document.getElementById("wifiTitle").innerHTML=labels[lang][4];
 document.getElementById("footer").innerHTML=labels[lang][5];
 }
 
-function autoLang(){
+window.onload=function(){
 var l=(navigator.language||"en").toLowerCase();
 
 if(l.indexOf("uz")>-1){setLang("uz");}
 else if(l.indexOf("ru")>-1){setLang("ru");}
 else if(l.indexOf("id")>-1){setLang("id");}
 else{setLang("en");}
-}
-
-autoLang();
+};
 </script>
 
 </body>
