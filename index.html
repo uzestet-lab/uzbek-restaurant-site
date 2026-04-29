@@ -313,43 +313,7 @@ else if(l.indexOf("ru")>-1){setLang("ru");}
 else if(l.indexOf("id")>-1){setLang("id");}
 else{setLang("en");}
 };
-  let audioCtx;
-
-function startCtx(){
-if(!audioCtx){
-audioCtx=new(window.AudioContext||window.webkitAudioContext)();
-}
-}
-
-function beep(freq,time,type){
-startCtx();
-
-const osc=audioCtx.createOscillator();
-const gain=audioCtx.createGain();
-
-osc.type=type;
-osc.frequency.value=freq;
-
-gain.gain.setValueAtTime(0.001,audioCtx.currentTime);
-gain.gain.exponentialRampToValueAtTime(0.05,audioCtx.currentTime+0.02);
-gain.gain.exponentialRampToValueAtTime(0.001,audioCtx.currentTime+time);
-
-osc.connect(gain);
-gain.connect(audioCtx.destination);
-
-osc.start();
-osc.stop(audioCtx.currentTime+time);
-}
-
-function menuSound(){beep(700,0.18,"triangle");setTimeout(()=>beep(980,0.18,"triangle"),120);}
-function mapSound(){beep(1050,0.12,"sine");setTimeout(()=>beep(1320,0.12,"sine"),100);}
-function instaSound(){beep(760,0.10,"triangle");setTimeout(()=>beep(1180,0.16,"triangle"),90);}
-function callSound(){beep(520,0.28,"sine");}
-
-btn1.addEventListener("click",function(){menuSound();});
-btn2.addEventListener("click",function(){mapSound();});
-btn3.addEventListener("click",function(){instaSound();});
-btn4.addEventListener("click",function(){callSound();});
+  
 </script>
 
 </body>
