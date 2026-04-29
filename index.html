@@ -16,7 +16,12 @@
 --glass:rgba(255,255,255,.04);
 }
 
-*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+-webkit-tap-highlight-color:transparent;
+}
 
 body{
 font-family:Inter,sans-serif;
@@ -38,20 +43,18 @@ from{background-position:0 0,100% 100%,0 0;}
 to{background-position:5% 0,95% 100%,0 0;}
 }
 
-/* Brand loading fade */
 .wrap{
 width:100%;
 max-width:430px;
 text-align:center;
 opacity:0;
-animation:wrapin .9s ease forwards .25s;
+animation:fadein .8s ease forwards;
 }
 
-@keyframes wrapin{
+@keyframes fadein{
 to{opacity:1;}
 }
 
-/* Sequence appearance */
 .logo,.title,.line,.langs,.text,.btn,.wifi,.footer{
 opacity:0;
 transform:translateY(18px);
@@ -59,57 +62,56 @@ animation:show .8s ease forwards;
 }
 
 .logo{animation-delay:.15s;}
-.title{animation-delay:.45s;}
-.line{animation-delay:.60s;}
-.langs{animation-delay:.78s;}
-.text{animation-delay:1.0s;}
-.btn1{animation-delay:1.22s;}
-.btn2{animation-delay:1.38s;}
-.btn3{animation-delay:1.54s;}
-.btn4{animation-delay:1.70s;}
-.wifi{animation-delay:1.95s;}
-.footer{animation-delay:2.15s;}
+.title{animation-delay:.35s;}
+.line{animation-delay:.5s;}
+.langs{animation-delay:.65s;}
+.text{animation-delay:.8s;}
+.btn1{animation-delay:1.0s;}
+.btn2{animation-delay:1.16s;}
+.btn3{animation-delay:1.32s;}
+.btn4{animation-delay:1.48s;}
+.wifi{animation-delay:1.72s;}
+.footer{animation-delay:1.9s;}
 
 @keyframes show{
 to{opacity:1;transform:translateY(0);}
 }
 
-/* Premium logo intro */
 .logo{
-width:96px;height:96px;margin:8px auto 18px;
+width:96px;height:96px;
+margin:8px auto 18px;
 border-radius:50%;
 overflow:hidden;
 border:1px solid var(--line);
-box-shadow:0 0 28px rgba(199,165,106,.18);
-transform:scale(.92);
-animation:logoIn 1s ease forwards .15s, floatlogo 3.2s ease-in-out infinite 1.4s;
+box-shadow:0 0 26px rgba(199,165,106,.18);
 }
 
-@keyframes logoIn{
-to{opacity:1;transform:scale(1);}
+.logo img{
+width:100%;
+height:100%;
+object-fit:cover;
 }
-
-@keyframes floatlogo{
-0%{transform:translateY(0);}
-100%{transform:translateY(-4px);}
-}
-
-.logo img{width:100%;height:100%;object-fit:cover;}
 
 .title{
 font-family:'Playfair Display',serif;
 font-size:31px;
-line-height:1.2;
 margin-bottom:12px;
+line-height:1.2;
 }
 
 .line{
-width:82px;height:1px;margin:0 auto 22px;
+width:82px;
+height:1px;
+margin:0 auto 22px;
 background:linear-gradient(90deg,transparent,var(--gold),transparent);
 }
 
 .langs{
-display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:18px;
+display:flex;
+justify-content:center;
+gap:8px;
+flex-wrap:wrap;
+margin-bottom:18px;
 }
 
 .langs button{
@@ -120,7 +122,6 @@ padding:8px 12px;
 border-radius:20px;
 font-size:12px;
 cursor:pointer;
-transition:.25s;
 }
 
 .langs button.active{
@@ -137,6 +138,7 @@ min-height:170px;
 
 .hidden{display:none;}
 
+/* PREMIUM BUTTONS */
 .btn{
 display:block;
 text-decoration:none;
@@ -150,10 +152,13 @@ font-size:15px;
 font-weight:500;
 position:relative;
 overflow:hidden;
-transition:.25s;
+transition:.22s ease;
+user-select:none;
+-webkit-user-select:none;
+-webkit-touch-callout:none;
+-webkit-tap-highlight-color:transparent;
 }
 
-/* Luxury shimmer */
 .btn::before{
 content:"";
 position:absolute;
@@ -161,23 +166,43 @@ top:0;
 left:-120%;
 width:55%;
 height:100%;
-background:linear-gradient(90deg,transparent,rgba(255,255,255,.14),transparent);
-animation:shimmer 3.8s linear infinite;
+background:linear-gradient(90deg,transparent,rgba(255,255,255,.12),transparent);
+animation:shine 4s linear infinite;
 }
 
-.btn1::before{animation-delay:2.4s;}
-.btn2::before{animation-delay:2.8s;}
-.btn3::before{animation-delay:3.2s;}
-.btn4::before{animation-delay:3.6s;}
+.btn1::before{animation-delay:2.0s;}
+.btn2::before{animation-delay:2.4s;}
+.btn3::before{animation-delay:2.8s;}
+.btn4::before{animation-delay:3.2s;}
 
-@keyframes shimmer{
+@keyframes shine{
 0%{left:-120%;}
 100%{left:140%;}
 }
 
+.btn::after{
+content:"";
+position:absolute;
+width:0;
+height:0;
+border-radius:50%;
+background:rgba(199,165,106,.18);
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+transition:.35s ease;
+}
+
+.btn:active::after{
+width:260px;
+height:260px;
+}
+
 .btn:active{
-transform:scale(.98);
-box-shadow:0 0 18px rgba(199,165,106,.22);
+transform:scale(.97);
+box-shadow:0 0 24px rgba(199,165,106,.22);
+border-color:#e2c995;
+background:rgba(199,165,106,.08);
 }
 
 .wifi{
