@@ -4,17 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>UzBek Restaurant Bali</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
 :root{
 --bg1:#08111d;
---bg2:#12233a;
+--bg2:#132238;
 --gold:#c7a56a;
---goldSoft:#e7d3a6;
---line:rgba(199,165,106,.38);
---glass:rgba(255,255,255,.035);
---white:rgba(255,255,255,.94);
+--gold2:#e7d3a6;
+--line:rgba(199,165,106,.35);
+--glass:rgba(255,255,255,.04);
 }
 
 *{
@@ -22,7 +22,6 @@ margin:0;
 padding:0;
 box-sizing:border-box;
 -webkit-tap-highlight-color:transparent;
--webkit-touch-callout:none;
 -webkit-user-select:none;
 user-select:none;
 }
@@ -34,50 +33,22 @@ min-height:100vh;
 display:flex;
 justify-content:center;
 padding:18px;
-overflow-x:hidden;
 background:
 radial-gradient(circle at 15% 10%, rgba(199,165,106,.05), transparent 28%),
 radial-gradient(circle at 85% 85%, rgba(199,165,106,.04), transparent 28%),
 linear-gradient(135deg,var(--bg1),var(--bg2));
-animation:bgMove 16s ease-in-out infinite alternate, pageIn 1.2s ease forwards;
-opacity:0;
-}
-
-@keyframes bgMove{
-from{background-position:0 0,100% 100%,0 0;}
-to{background-position:3% 0,97% 100%,0 0;}
-}
-
-@keyframes pageIn{
-from{opacity:0;}
-to{opacity:1;}
+overflow-x:hidden;
 }
 
 .wrap{
 width:100%;
 max-width:430px;
 text-align:center;
+animation:fadein 1.2s ease forwards;
 }
 
-.logo,.title,.line,.langs,.text,.btn,.wifi,.footer{
-opacity:0;
-transform:translateY(16px);
-animation:reveal .75s cubic-bezier(.22,1,.36,1) forwards;
-}
-
-.logo{animation-delay:.15s;}
-.title{animation-delay:.30s;}
-.line{animation-delay:.45s;}
-.langs{animation-delay:.58s;}
-.text{animation-delay:.72s;}
-.btn1{animation-delay:.90s;}
-.btn2{animation-delay:1.02s;}
-.btn3{animation-delay:1.14s;}
-.btn4{animation-delay:1.26s;}
-.wifi{animation-delay:1.42s;}
-.footer{animation-delay:1.58s;}
-
-@keyframes reveal{
+@keyframes fadein{
+from{opacity:0;transform:translateY(18px);}
 to{opacity:1;transform:translateY(0);}
 }
 
@@ -97,15 +68,15 @@ height:100%;
 object-fit:cover;
 }
 
-.title{
+h1{
 font-family:'Playfair Display',serif;
-font-size:31px;
-line-height:1.2;
+font-size:30px;
 margin-bottom:12px;
+line-height:1.2;
 }
 
 .line{
-width:84px;
+width:82px;
 height:1px;
 margin:0 auto 22px;
 background:linear-gradient(90deg,transparent,var(--gold),transparent);
@@ -139,8 +110,8 @@ color:#111;
 font-size:15px;
 line-height:1.9;
 margin-bottom:22px;
-min-height:170px;
-color:var(--white);
+min-height:165px;
+opacity:.95;
 }
 
 .hidden{display:none;}
@@ -149,23 +120,21 @@ color:var(--white);
 display:block;
 text-decoration:none;
 color:#fff;
-padding:15px 16px;
+padding:15px;
 margin-bottom:13px;
-border-radius:16px;
+border-radius:15px;
 border:1px solid var(--line);
 background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.02));
 font-size:15px;
 font-weight:500;
-position:relative;
-overflow:hidden;
 transition:.16s ease;
 }
 
 .btn:active{
-transform:translateY(1px) scale(.985);
-border-color:rgba(231,211,166,.85);
+transform:scale(.985);
+border-color:rgba(231,211,166,.8);
 background:rgba(199,165,106,.06);
-box-shadow:0 0 16px rgba(199,165,106,.12);
+box-shadow:0 0 16px rgba(199,165,106,.10);
 }
 
 .wifi{
@@ -179,14 +148,14 @@ background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));
 .wtitle{
 font-family:'Playfair Display',serif;
 font-size:22px;
-color:var(--goldSoft);
 margin-bottom:12px;
+color:var(--gold2);
 }
 
 .meta{
 font-size:12px;
-opacity:.56;
-letter-spacing:1.3px;
+opacity:.55;
+letter-spacing:1.2px;
 text-transform:uppercase;
 margin-top:8px;
 }
@@ -201,29 +170,128 @@ margin-top:4px;
 margin-top:22px;
 font-size:12px;
 opacity:.5;
-letter-spacing:1.6px;
+letter-spacing:1.5px;
 }
 
 @media(max-width:430px){
-.title{font-size:28px;}
-.text{font-size:14px;min-height:160px;}
-.logo{width:86px;height:86px;}
+h1{font-size:28px;}
+.text{font-size:14px;}
+.logo{width:84px;height:84px;}
 }
 </style>
 </head>
 
 <body>
+
 <div class="wrap">
 
 <div class="logo">
 <img src="Untitled design.png" alt="UzBek Restaurant Bali">
 </div>
 
-<h1 class="title">UzBek Restaurant Bali</h1>
+<h1>UzBek Restaurant Bali</h1>
 <div class="line"></div>
 
 <div class="langs">
 <button id="buz" onclick="setLang('uz')">UZ</button>
 <button id="bru" onclick="setLang('ru')">RU</button>
 <button id="ben" onclick="setLang('en')">EN</button>
-<button id="bid
+<button id="bid" onclick="setLang('id')">ID</button>
+<button id="bzh" onclick="setLang('zh')">中文</button>
+</div>
+
+<div id="uz" class="text hidden">
+Restoranimizga tashrif buyurganingiz uchun rahmat.<br><br>
+Agar sizga yoqqan bo‘lsa, Google Maps’da sharh qoldirsangiz minnatdor bo‘lamiz.<br><br>
+Instagram sahifamizga obuna bo‘lishingizdan mamnun bo‘lamiz.<br><br>
+Zarurat bo‘lsa menejer bilan bog‘lanishingiz mumkin.
+</div>
+
+<div id="ru" class="text hidden">
+Благодарим вас за визит в наш ресторан.<br><br>
+Если вам понравилось, будем признательны за отзыв в Google Картах.<br><br>
+Будем рады вашей подписке на Instagram.<br><br>
+При необходимости вы можете связаться с управляющим.
+</div>
+
+<div id="en" class="text hidden">
+Thank you for visiting our restaurant.<br><br>
+If you enjoyed your experience, we would appreciate your review on Google Maps.<br><br>
+We would be delighted if you follow us on Instagram.<br><br>
+You may contact the manager if needed.
+</div>
+
+<div id="id" class="text hidden">
+Terima kasih telah mengunjungi restoran kami.<br><br>
+Jika Anda puas, kami akan menghargai ulasan Anda di Google Maps.<br><br>
+Kami senang jika Anda mengikuti Instagram kami.<br><br>
+Anda dapat menghubungi manajer bila diperlukan.
+</div>
+
+<div id="zh" class="text hidden">
+感谢您光临我们的餐厅。<br><br>
+如果您满意，欢迎在 Google 地图给予评价。<br><br>
+欢迎关注我们的 Instagram。<br><br>
+如有需要，请联系经理。
+</div>
+
+<a id="btn1" class="btn" href="menu.pdf" target="_blank">Menu</a>
+<a id="btn2" class="btn" href="https://maps.app.goo.gl/bbbar62r5L8fCAz87" target="_blank">Google Maps</a>
+<a id="btn3" class="btn" href="https://www.instagram.com/uzbek_restaurant_bali?igsh=NGx0MTR1emJxcThn&utm_source=qr" target="_blank">Instagram</a>
+<a id="btn4" class="btn" href="https://wa.me/6282145823322" target="_blank">Contact Manager</a>
+
+<div class="wifi">
+<div id="wifiTitle" class="wtitle">Guest WiFi</div>
+
+<div class="meta">Network</div>
+<div class="value">Uz&Bek Restoran</div>
+
+<div class="meta">Password</div>
+<div class="value">12345678</div>
+</div>
+
+<div id="footer" class="footer">WITH WARMTH & RESPECT</div>
+
+</div>
+
+<script>
+var labels={
+uz:["Menyu","Google Maps","Instagram","Menejer bilan bog‘lanish","Mehmon WiFi","MEHR VA HURMAT ILA"],
+ru:["Меню","Google Карты","Instagram","Связаться с управляющим","WiFi для гостей","С ТЕПЛОМ И УВАЖЕНИЕМ"],
+en:["Menu","Google Maps","Instagram","Contact Manager","Guest WiFi","WITH WARMTH & RESPECT"],
+id:["Menu","Google Maps","Instagram","Hubungi Manajer","WiFi Tamu","DENGAN HANGAT & HORMAT"],
+zh:["菜单","Google 地图","Instagram","联系经理","访客 WiFi","温暖与敬意"]
+};
+
+function setLang(lang){
+["uz","ru","en","id","zh"].forEach(function(x){
+document.getElementById(x).classList.add("hidden");
+document.getElementById("b"+x).classList.remove("active");
+});
+
+document.getElementById(lang).classList.remove("hidden");
+document.getElementById("b"+lang).classList.add("active");
+
+document.getElementById("btn1").innerHTML=labels[lang][0];
+document.getElementById("btn2").innerHTML=labels[lang][1];
+document.getElementById("btn3").innerHTML=labels[lang][2];
+document.getElementById("btn4").innerHTML=labels[lang][3];
+document.getElementById("wifiTitle").innerHTML=labels[lang][4];
+document.getElementById("footer").innerHTML=labels[lang][5];
+}
+
+function autoLang(){
+var l=(navigator.language||"en").toLowerCase();
+
+if(l.indexOf("uz")>-1) setLang("uz");
+else if(l.indexOf("ru")>-1) setLang("ru");
+else if(l.indexOf("id")>-1) setLang("id");
+else if(l.indexOf("zh")>-1) setLang("zh");
+else setLang("en");
+}
+
+autoLang();
+</script>
+
+</body>
+</html>
