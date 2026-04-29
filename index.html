@@ -313,53 +313,43 @@ else if(l.indexOf("ru")>-1){setLang("ru");}
 else if(l.indexOf("id")>-1){setLang("id");}
 else{setLang("en");}
 };
-  function tone(freq,duration,type){
-var ctx=new(window.AudioContext||window.webkitAudioContext)();
-var osc=ctx.createOscillator();
-var gain=ctx.createGain();
+  let audioCtx;
+
+function startCtx(){
+if(!audioCtx){
+audioCtx=new(window.AudioContext||window.webkitAudioContext)();
+}
+}
+
+function beep(freq,time,type){
+startCtx();
+
+const osc=audioCtx.createOscillator();
+const gain=audioCtx.createGain();
 
 osc.type=type;
 osc.frequency.value=freq;
 
-gain.gain.setValueAtTime(0.001,ctx.currentTime);
-gain.gain.exponentialRampToValueAtTime(0.06,ctx.currentTime+0.02);
-gain.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+duration);
+gain.gain.setValueAtTime(0.001,audioCtx.currentTime);
+gain.gain.exponentialRampToValueAtTime(0.05,audioCtx.currentTime+0.02);
+gain.gain.exponentialRampToValueAtTime(0.001,audioCtx.currentTime+time);
 
 osc.connect(gain);
-gain.connect(ctx.destination);
+gain.connect(audioCtx.destination);
 
 osc.start();
-osc.stop(ctx.currentTime+duration);
+osc.stop(audioCtx.currentTime+time);
 }
 
-function menuSound(){tone(660,0.35,"triangle");setTimeout(function(){tone(880,0.25,"triangle");},120);}
-function mapSound(){tone(950,0.18,"sine");setTimeout(function(){tone(1250,0.18,"sine");},120);}
-function instaSound(){tone(720,0.12,"triangle");setTimeout(function(){tone(1100,0.22,"triangle");},90);}
-function callSound(){tone(520,0.40,"sine");}
+function menuSound(){beep(700,0.18,"triangle");setTimeout(()=>beep(980,0.18,"triangle"),120);}
+function mapSound(){beep(1050,0.12,"sine");setTimeout(()=>beep(1320,0.12,"sine"),100);}
+function instaSound(){beep(760,0.10,"triangle");setTimeout(()=>beep(1180,0.16,"triangle"),90);}
+function callSound(){beep(520,0.28,"sine");}
 
-document.getElementById("btn1").onclick=function(e){
-e.preventDefault();
-menuSound();
-setTimeout(()=>window.open(this.href,"_blank"),350);
-};
-
-document.getElementById("btn2").onclick=function(e){
-e.preventDefault();
-mapSound();
-setTimeout(()=>window.open(this.href,"_blank"),250);
-};
-
-document.getElementById("btn3").onclick=function(e){
-e.preventDefault();
-instaSound();
-setTimeout(()=>window.open(this.href,"_blank"),250);
-};
-
-document.getElementById("btn4").onclick=function(e){
-e.preventDefault();
-callSound();
-setTimeout(()=>window.open(this.href,"_blank"),350);
-};
+btn1.addEventListener("click",function(){menuSound();});
+btn2.addEventListener("click",function(){mapSound();});
+btn3.addEventListener("click",function(){instaSound();});
+btn4.addEventListener("click",function(){callSound();});
 </script>
 
 </body>
