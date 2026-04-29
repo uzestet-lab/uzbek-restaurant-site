@@ -11,6 +11,7 @@
 --bg1:#0b1320;
 --bg2:#132238;
 --gold:#c7a56a;
+--gold2:#ead3a0;
 --line:rgba(199,165,106,.45);
 --glass:rgba(255,255,255,.04);
 }
@@ -29,7 +30,7 @@ background:
 radial-gradient(circle at 20% 15%, rgba(199,165,106,.08), transparent 30%),
 radial-gradient(circle at 80% 80%, rgba(199,165,106,.06), transparent 28%),
 linear-gradient(135deg,var(--bg1),var(--bg2));
-animation:bgmove 10s ease-in-out infinite alternate;
+animation:bgmove 12s ease-in-out infinite alternate;
 }
 
 @keyframes bgmove{
@@ -37,35 +38,60 @@ from{background-position:0 0,100% 100%,0 0;}
 to{background-position:5% 0,95% 100%,0 0;}
 }
 
-.wrap{width:100%;max-width:430px;text-align:center;}
+/* Brand loading fade */
+.wrap{
+width:100%;
+max-width:430px;
+text-align:center;
+opacity:0;
+animation:wrapin .9s ease forwards .25s;
+}
 
+@keyframes wrapin{
+to{opacity:1;}
+}
+
+/* Sequence appearance */
 .logo,.title,.line,.langs,.text,.btn,.wifi,.footer{
 opacity:0;
-transform:translateY(20px);
+transform:translateY(18px);
 animation:show .8s ease forwards;
 }
 
-.logo{animation-delay:.1s;}
-.title{animation-delay:.35s;}
-.line{animation-delay:.5s;}
-.langs{animation-delay:.65s;}
-.text{animation-delay:.8s;}
-.btn1{animation-delay:1.0s;}
-.btn2{animation-delay:1.18s;}
-.btn3{animation-delay:1.36s;}
-.btn4{animation-delay:1.54s;}
-.wifi{animation-delay:1.78s;}
-.footer{animation-delay:2.0s;}
+.logo{animation-delay:.15s;}
+.title{animation-delay:.45s;}
+.line{animation-delay:.60s;}
+.langs{animation-delay:.78s;}
+.text{animation-delay:1.0s;}
+.btn1{animation-delay:1.22s;}
+.btn2{animation-delay:1.38s;}
+.btn3{animation-delay:1.54s;}
+.btn4{animation-delay:1.70s;}
+.wifi{animation-delay:1.95s;}
+.footer{animation-delay:2.15s;}
 
 @keyframes show{
 to{opacity:1;transform:translateY(0);}
 }
 
+/* Premium logo intro */
 .logo{
 width:96px;height:96px;margin:8px auto 18px;
-border-radius:50%;overflow:hidden;
+border-radius:50%;
+overflow:hidden;
 border:1px solid var(--line);
-box-shadow:0 0 24px rgba(199,165,106,.18);
+box-shadow:0 0 28px rgba(199,165,106,.18);
+transform:scale(.92);
+animation:logoIn 1s ease forwards .15s, floatlogo 3.2s ease-in-out infinite 1.4s;
+}
+
+@keyframes logoIn{
+to{opacity:1;transform:scale(1);}
+}
+
+@keyframes floatlogo{
+0%{transform:translateY(0);}
+100%{transform:translateY(-4px);}
 }
 
 .logo img{width:100%;height:100%;object-fit:cover;}
@@ -73,12 +99,12 @@ box-shadow:0 0 24px rgba(199,165,106,.18);
 .title{
 font-family:'Playfair Display',serif;
 font-size:31px;
-margin-bottom:12px;
 line-height:1.2;
+margin-bottom:12px;
 }
 
 .line{
-width:80px;height:1px;margin:0 auto 22px;
+width:82px;height:1px;margin:0 auto 22px;
 background:linear-gradient(90deg,transparent,var(--gold),transparent);
 }
 
@@ -94,6 +120,7 @@ padding:8px 12px;
 border-radius:20px;
 font-size:12px;
 cursor:pointer;
+transition:.25s;
 }
 
 .langs button.active{
@@ -108,6 +135,8 @@ margin-bottom:22px;
 min-height:170px;
 }
 
+.hidden{display:none;}
+
 .btn{
 display:block;
 text-decoration:none;
@@ -119,12 +148,36 @@ border:1px solid var(--line);
 background:var(--glass);
 font-size:15px;
 font-weight:500;
+position:relative;
+overflow:hidden;
 transition:.25s;
+}
+
+/* Luxury shimmer */
+.btn::before{
+content:"";
+position:absolute;
+top:0;
+left:-120%;
+width:55%;
+height:100%;
+background:linear-gradient(90deg,transparent,rgba(255,255,255,.14),transparent);
+animation:shimmer 3.8s linear infinite;
+}
+
+.btn1::before{animation-delay:2.4s;}
+.btn2::before{animation-delay:2.8s;}
+.btn3::before{animation-delay:3.2s;}
+.btn4::before{animation-delay:3.6s;}
+
+@keyframes shimmer{
+0%{left:-120%;}
+100%{left:140%;}
 }
 
 .btn:active{
 transform:scale(.98);
-box-shadow:0 0 18px rgba(199,165,106,.20);
+box-shadow:0 0 18px rgba(199,165,106,.22);
 }
 
 .wifi{
@@ -139,7 +192,7 @@ background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
 font-family:'Playfair Display',serif;
 font-size:22px;
 margin-bottom:12px;
-color:#e7d3aa;
+color:var(--gold2);
 }
 
 .meta{
@@ -163,8 +216,6 @@ opacity:.55;
 letter-spacing:1.4px;
 }
 
-.hidden{display:none;}
-
 @media(max-width:430px){
 .title{font-size:28px;}
 .text{font-size:14px;}
@@ -177,7 +228,7 @@ letter-spacing:1.4px;
 <div class="wrap">
 
 <div class="logo">
-<img src="Untitled design.png">
+<img src="Untitled design.png" alt="UzBek Restaurant Bali">
 </div>
 
 <h1 class="title">UzBek Restaurant Bali</h1>
