@@ -21,6 +21,8 @@ margin:0;
 padding:0;
 box-sizing:border-box;
 -webkit-tap-highlight-color:transparent;
+-webkit-user-select:none;
+user-select:none;
 }
 
 body{
@@ -41,11 +43,12 @@ overflow-x:hidden;
 width:100%;
 max-width:430px;
 text-align:center;
-animation:fade .8s ease;
+opacity:0;
+animation:pageReveal 1.6s ease forwards;
 }
 
-@keyframes fade{
-from{opacity:0;transform:translateY(15px);}
+@keyframes pageReveal{
+from{opacity:0;transform:translateY(26px);}
 to{opacity:1;transform:translateY(0);}
 }
 
@@ -57,6 +60,7 @@ border-radius:50%;
 overflow:hidden;
 border:1px solid var(--line);
 box-shadow:0 0 18px rgba(199,165,106,.10);
+animation:fadeDown .9s ease forwards;
 }
 
 .logo img{
@@ -70,6 +74,9 @@ font-family:'Playfair Display',serif;
 font-size:30px;
 line-height:1.2;
 margin-bottom:12px;
+opacity:0;
+animation:fadeDown .9s ease forwards;
+animation-delay:.2s;
 }
 
 .line{
@@ -77,6 +84,9 @@ width:82px;
 height:1px;
 margin:0 auto 22px;
 background:linear-gradient(90deg,transparent,var(--gold),transparent);
+opacity:0;
+animation:fadeDown .9s ease forwards;
+animation-delay:.35s;
 }
 
 .langs{
@@ -85,6 +95,9 @@ justify-content:center;
 gap:8px;
 flex-wrap:wrap;
 margin-bottom:18px;
+opacity:0;
+animation:fadeDown .9s ease forwards;
+animation-delay:.5s;
 }
 
 .langs button{
@@ -109,10 +122,15 @@ line-height:1.9;
 margin-bottom:22px;
 min-height:165px;
 opacity:.95;
+animation:fadeDown .9s ease forwards;
+animation-delay:.7s;
 }
 
-.hidden{
-display:none;
+.hidden{display:none;}
+
+@keyframes fadeDown{
+from{opacity:0;transform:translateY(-14px);}
+to{opacity:1;transform:translateY(0);}
 }
 
 .btn{
@@ -126,13 +144,47 @@ border:1px solid var(--line);
 background:rgba(255,255,255,.03);
 font-size:15px;
 font-weight:500;
-transition:.15s;
+transition:.22s ease;
+position:relative;
+overflow:hidden;
+opacity:0;
+transform:translateY(-14px);
+animation:btnIn .9s ease forwards;
+}
+
+#btn1{animation-delay:1.0s;}
+#btn2{animation-delay:1.2s;}
+#btn3{animation-delay:1.4s;}
+#btn4{animation-delay:1.6s;}
+
+@keyframes btnIn{
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.btn::before{
+content:"";
+position:absolute;
+top:0;
+left:-120%;
+width:45%;
+height:100%;
+background:linear-gradient(90deg,transparent,rgba(231,211,166,.12),transparent);
+animation:goldSweep 5s linear infinite;
+}
+
+@keyframes goldSweep{
+0%{left:-120%;}
+100%{left:140%;}
 }
 
 .btn:active{
 transform:scale(.985);
 border-color:rgba(231,211,166,.8);
-box-shadow:0 0 14px rgba(199,165,106,.10);
+box-shadow:0 0 18px rgba(199,165,106,.14);
+background:rgba(199,165,106,.06);
 }
 
 .wifi{
@@ -141,6 +193,9 @@ padding:20px;
 border-radius:18px;
 border:1px solid var(--line);
 background:rgba(255,255,255,.03);
+opacity:0;
+animation:fadeDown .9s ease forwards;
+animation-delay:1.85s;
 }
 
 .wtitle{
@@ -170,6 +225,8 @@ font-size:12px;
 opacity:.5;
 letter-spacing:1.5px;
 padding-bottom:20px;
+animation:fadeDown .9s ease forwards;
+animation-delay:2s;
 }
 
 @media(max-width:430px){
@@ -197,7 +254,6 @@ h1{font-size:28px;}
 <button id="bru" onclick="setLang('ru')">RU</button>
 <button id="ben" onclick="setLang('en')">EN</button>
 <button id="bid" onclick="setLang('id')">ID</button>
-<button id="bzh" onclick="setLang('zh')">中文</button>
 </div>
 
 <div id="uz" class="text hidden">
@@ -228,13 +284,6 @@ Kami senang jika Anda mengikuti Instagram kami.<br><br>
 Anda dapat menghubungi manajer bila diperlukan.
 </div>
 
-<div id="zh" class="text hidden">
-感谢您光临我们的餐厅。<br><br>
-如果您满意，欢迎在 Google 地图给予评价。<br><br>
-欢迎关注我们的 Instagram。<br><br>
-如有需要，请联系经理。
-</div>
-
 <a id="btn1" class="btn" href="menu.pdf" target="_blank">Menu</a>
 <a id="btn2" class="btn" href="https://maps.app.goo.gl/bbbar62r5L8fCAz87" target="_blank">Google Maps</a>
 <a id="btn3" class="btn" href="https://www.instagram.com/uzbek_restaurant_bali?igsh=NGx0MTR1emJxcThn&utm_source=qr" target="_blank">Instagram</a>
@@ -259,13 +308,12 @@ var labels={
 uz:["Menyu","Google Maps","Instagram","Menejer bilan bog‘lanish","Mehmon WiFi","MEHR VA HURMAT ILA"],
 ru:["Меню","Google Карты","Instagram","Связаться с управляющим","WiFi для гостей","С ТЕПЛОМ И УВАЖЕНИЕМ"],
 en:["Menu","Google Maps","Instagram","Contact Manager","Guest WiFi","WITH WARMTH & RESPECT"],
-id:["Menu","Google Maps","Instagram","Hubungi Manajer","WiFi Tamu","DENGAN HANGAT & HORMAT"],
-zh:["菜单","Google 地图","Instagram","联系经理","访客 WiFi","温暖与敬意"]
+id:["Menu","Google Maps","Instagram","Hubungi Manajer","WiFi Tamu","DENGAN HANGAT & HORMAT"]
 };
 
 function setLang(lang){
 
-var arr=["uz","ru","en","id","zh"];
+var arr=["uz","ru","en","id"];
 
 for(var i=0;i<arr.length;i++){
 document.getElementById(arr[i]).classList.add("hidden");
@@ -289,7 +337,6 @@ var l=(navigator.language||"en").toLowerCase();
 if(l.indexOf("uz")>-1){setLang("uz");}
 else if(l.indexOf("ru")>-1){setLang("ru");}
 else if(l.indexOf("id")>-1){setLang("id");}
-else if(l.indexOf("zh")>-1){setLang("zh");}
 else{setLang("en");}
 }
 
