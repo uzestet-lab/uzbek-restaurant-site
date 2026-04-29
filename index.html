@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>UzBek Restaurant Bali</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -14,7 +14,6 @@
 --gold:#c7a56a;
 --gold2:#e7d3a6;
 --line:rgba(199,165,106,.35);
---glass:rgba(255,255,255,.04);
 }
 
 *{
@@ -22,8 +21,6 @@ margin:0;
 padding:0;
 box-sizing:border-box;
 -webkit-tap-highlight-color:transparent;
--webkit-user-select:none;
-user-select:none;
 }
 
 body{
@@ -44,11 +41,11 @@ overflow-x:hidden;
 width:100%;
 max-width:430px;
 text-align:center;
-animation:fadein 1.2s ease forwards;
+animation:fade .8s ease;
 }
 
-@keyframes fadein{
-from{opacity:0;transform:translateY(18px);}
+@keyframes fade{
+from{opacity:0;transform:translateY(15px);}
 to{opacity:1;transform:translateY(0);}
 }
 
@@ -71,8 +68,8 @@ object-fit:cover;
 h1{
 font-family:'Playfair Display',serif;
 font-size:30px;
-margin-bottom:12px;
 line-height:1.2;
+margin-bottom:12px;
 }
 
 .line{
@@ -114,7 +111,9 @@ min-height:165px;
 opacity:.95;
 }
 
-.hidden{display:none;}
+.hidden{
+display:none;
+}
 
 .btn{
 display:block;
@@ -124,17 +123,16 @@ padding:15px;
 margin-bottom:13px;
 border-radius:15px;
 border:1px solid var(--line);
-background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.02));
+background:rgba(255,255,255,.03);
 font-size:15px;
 font-weight:500;
-transition:.16s ease;
+transition:.15s;
 }
 
 .btn:active{
 transform:scale(.985);
 border-color:rgba(231,211,166,.8);
-background:rgba(199,165,106,.06);
-box-shadow:0 0 16px rgba(199,165,106,.10);
+box-shadow:0 0 14px rgba(199,165,106,.10);
 }
 
 .wifi{
@@ -142,14 +140,14 @@ margin-top:18px;
 padding:20px;
 border-radius:18px;
 border:1px solid var(--line);
-background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));
+background:rgba(255,255,255,.03);
 }
 
 .wtitle{
 font-family:'Playfair Display',serif;
 font-size:22px;
-margin-bottom:12px;
 color:var(--gold2);
+margin-bottom:12px;
 }
 
 .meta{
@@ -171,6 +169,7 @@ margin-top:22px;
 font-size:12px;
 opacity:.5;
 letter-spacing:1.5px;
+padding-bottom:20px;
 }
 
 @media(max-width:430px){
@@ -186,10 +185,11 @@ h1{font-size:28px;}
 <div class="wrap">
 
 <div class="logo">
-<img src="Untitled design.png" alt="UzBek Restaurant Bali">
+<img src="Untitled design.png" alt="logo">
 </div>
 
 <h1>UzBek Restaurant Bali</h1>
+
 <div class="line"></div>
 
 <div class="langs">
@@ -264,10 +264,13 @@ zh:["菜单","Google 地图","Instagram","联系经理","访客 WiFi","温暖与
 };
 
 function setLang(lang){
-["uz","ru","en","id","zh"].forEach(function(x){
-document.getElementById(x).classList.add("hidden");
-document.getElementById("b"+x).classList.remove("active");
-});
+
+var arr=["uz","ru","en","id","zh"];
+
+for(var i=0;i<arr.length;i++){
+document.getElementById(arr[i]).classList.add("hidden");
+document.getElementById("b"+arr[i]).classList.remove("active");
+}
 
 document.getElementById(lang).classList.remove("hidden");
 document.getElementById("b"+lang).classList.add("active");
@@ -283,11 +286,11 @@ document.getElementById("footer").innerHTML=labels[lang][5];
 function autoLang(){
 var l=(navigator.language||"en").toLowerCase();
 
-if(l.indexOf("uz")>-1) setLang("uz");
-else if(l.indexOf("ru")>-1) setLang("ru");
-else if(l.indexOf("id")>-1) setLang("id");
-else if(l.indexOf("zh")>-1) setLang("zh");
-else setLang("en");
+if(l.indexOf("uz")>-1){setLang("uz");}
+else if(l.indexOf("ru")>-1){setLang("ru");}
+else if(l.indexOf("id")>-1){setLang("id");}
+else if(l.indexOf("zh")>-1){setLang("zh");}
+else{setLang("en");}
 }
 
 autoLang();
