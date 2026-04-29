@@ -14,7 +14,7 @@
 --bg1:#0d1522;
 --bg2:#172436;
 --gold:#c8a76b;
---gold2:#e8d1a3;
+--gold2:#ead2a1;
 --line:rgba(200,167,107,.45);
 --glass:rgba(255,255,255,.04);
 }
@@ -30,12 +30,12 @@ body{
 font-family:Inter,sans-serif;
 color:#fff;
 min-height:100vh;
-overflow-x:hidden;
 display:flex;
 justify-content:center;
 padding:18px 14px 28px;
+overflow-x:hidden;
 background:
-radial-gradient(circle at 15% 10%, rgba(200,167,107,.08), transparent 26%),
+radial-gradient(circle at 15% 10%, rgba(200,167,107,.08), transparent 28%),
 radial-gradient(circle at 85% 90%, rgba(200,167,107,.06), transparent 28%),
 linear-gradient(135deg,var(--bg1),var(--bg2));
 animation:bgmove 14s ease-in-out infinite alternate;
@@ -54,7 +54,7 @@ animation:fadeup 1s ease forwards;
 }
 
 @keyframes fadeup{
-from{opacity:0;transform:translateY(18px);}
+from{opacity:0;transform:translateY(16px);}
 to{opacity:1;transform:translateY(0);}
 }
 
@@ -63,20 +63,19 @@ width:92px;
 height:92px;
 margin:8px auto 16px;
 border-radius:50%;
-background:linear-gradient(145deg,#1a2434,#101826);
+overflow:hidden;
 border:1px solid var(--line);
-display:flex;
-align-items:center;
-justify-content:center;
-font-family:"Playfair Display",serif;
-font-size:30px;
-color:var(--gold2);
-letter-spacing:1px;
-box-shadow:0 0 28px rgba(200,167,107,.12);
-animation:logofloat 3.2s ease-in-out infinite alternate;
+box-shadow:0 0 24px rgba(200,167,107,.12);
+animation:floatlogo 3.2s ease-in-out infinite alternate;
 }
 
-@keyframes logofloat{
+.logo img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+@keyframes floatlogo{
 from{transform:translateY(0);}
 to{transform:translateY(-3px);}
 }
@@ -85,13 +84,12 @@ h1{
 font-family:"Playfair Display",serif;
 font-size:31px;
 line-height:1.18;
-font-weight:700;
 margin-bottom:14px;
-letter-spacing:.3px;
+font-weight:700;
 }
 
 .line{
-width:72px;
+width:74px;
 height:1px;
 margin:0 auto 22px;
 background:linear-gradient(90deg,transparent,var(--gold),transparent);
@@ -124,10 +122,11 @@ color:#111927;
 
 .text{
 font-size:15px;
-line-height:1.8;
+line-height:1.85;
 opacity:.92;
 margin-bottom:22px;
-animation:textfade 1.2s ease;
+min-height:165px;
+animation:textfade 1.1s ease;
 }
 
 @keyframes textfade{
@@ -146,13 +145,26 @@ margin-bottom:13px;
 border-radius:12px;
 border:1px solid var(--line);
 background:var(--glass);
-backdrop-filter:blur(6px);
 font-size:15px;
 font-weight:500;
-letter-spacing:.2px;
-transition:.25s;
+transition:.28s;
 position:relative;
 overflow:hidden;
+opacity:0;
+transform:translateY(14px);
+animation:rise .7s ease forwards;
+}
+
+.btn:nth-of-type(1){animation-delay:.10s;}
+.btn:nth-of-type(2){animation-delay:.20s;}
+.btn:nth-of-type(3){animation-delay:.30s;}
+.btn:nth-of-type(4){animation-delay:.40s;}
+
+@keyframes rise{
+to{
+opacity:1;
+transform:translateY(0);
+}
 }
 
 .btn:before{
@@ -173,23 +185,21 @@ left:130%;
 
 .btn:hover,
 .btn:active{
-transform:translateY(-1px);
-box-shadow:0 0 20px rgba(200,167,107,.12);
-border-color:rgba(232,209,163,.65);
+transform:scale(.985);
+box-shadow:0 0 20px rgba(200,167,107,.16);
+border-color:rgba(234,210,161,.75);
 }
 
 .wifi{
 margin-top:18px;
-padding:18px 18px 16px;
-border:1px solid var(--line);
+padding:18px;
 border-radius:14px;
+border:1px solid var(--line);
 background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));
-animation:wifiin 1.5s ease;
-}
-
-@keyframes wifiin{
-from{opacity:0;transform:translateY(10px);}
-to{opacity:1;transform:translateY(0);}
+opacity:0;
+transform:translateY(12px);
+animation:rise .8s ease forwards;
+animation-delay:.55s;
 }
 
 .wtitle{
@@ -201,10 +211,10 @@ margin-bottom:12px;
 
 .meta{
 font-size:12px;
-letter-spacing:1px;
 opacity:.62;
-margin-top:8px;
+letter-spacing:1px;
 text-transform:uppercase;
+margin-top:8px;
 }
 
 .value{
@@ -222,9 +232,9 @@ letter-spacing:1.4px;
 
 @media(max-width:430px){
 h1{font-size:28px;}
-.text{font-size:14px;}
+.text{font-size:14px;min-height:155px;}
 .btn{font-size:14px;padding:14px;}
-.logo{width:84px;height:84px;font-size:27px;}
+.logo{width:84px;height:84px;}
 }
 </style>
 </head>
@@ -233,7 +243,9 @@ h1{font-size:28px;}
 
 <div class="wrap">
 
-<div class="logo">UB</div>
+<div class="logo">
+<img src="https://i.imgur.com/3gL4Q6H.jpeg" alt="UzBek Restaurant Bali">
+</div>
 
 <h1>UzBek Restaurant Bali</h1>
 <div class="line"></div>
@@ -248,35 +260,40 @@ h1{font-size:28px;}
 
 <div id="uz" class="text hidden">
 Restoranimizga tashrif buyurganingiz uchun rahmat.<br><br>
-Fikringiz va bahoyingiz biz uchun juda muhim.<br><br>
-Instagram sahifamizni kuzating yoki menejer bilan bog‘laning.
+Agar sizda yoqimli taassurot qolgan bo‘lsa, Google Maps’da fikr bildirishingizdan minnatdor bo‘lamiz.<br><br>
+Instagram sahifamizga obuna bo‘lsangiz mamnun bo‘lamiz.<br><br>
+Zarurat bo‘lsa, menejer bilan bog‘lanishingiz mumkin.
 </div>
 
 <div id="ru" class="text hidden">
 Благодарим вас за визит в наш ресторан.<br><br>
-Ваш отзыв очень важен для нас.<br><br>
-Вы можете подписаться на Instagram или связаться с менеджером.
+Если у вас останутся приятные впечатления, будем признательны за отзыв в Google Картах.<br><br>
+Также будем рады вашей подписке на наш Instagram.<br><br>
+При необходимости вы всегда можете связаться с управляющим ресторана.
 </div>
 
 <div id="en" class="text hidden">
 Thank you for visiting our restaurant.<br><br>
-Your review means a lot to us.<br><br>
-Follow our Instagram or contact the manager directly.
+If you enjoyed your experience, we would greatly appreciate your review on Google Maps.<br><br>
+We would also be delighted to have you follow us on Instagram.<br><br>
+Should you need any assistance, you are always welcome to contact the restaurant manager.
 </div>
 
 <div id="id" class="text hidden">
-Terima kasih telah berkunjung ke restoran kami.<br><br>
-Ulasan Anda sangat berarti bagi kami.<br><br>
-Ikuti Instagram kami atau hubungi manajer.
+Terima kasih telah mengunjungi restoran kami.<br><br>
+Jika Anda memiliki kesan yang menyenangkan, kami akan sangat menghargai ulasan Anda di Google Maps.<br><br>
+Kami juga akan senang jika Anda mengikuti Instagram kami.<br><br>
+Jika diperlukan, Anda selalu dapat menghubungi manajer restoran.
 </div>
 
 <div id="zh" class="text hidden">
 感谢您光临我们的餐厅。<br><br>
-您的评价对我们非常重要。<br><br>
-欢迎关注 Instagram 或联系经理。
+如果您留下了美好的体验，我们将非常感谢您在 Google 地图上的评价。<br><br>
+也欢迎您关注我们的 Instagram。<br><br>
+如有需要，您随时可以联系餐厅经理。
 </div>
 
-<a class="btn" href="MENU.pdf" target="_blank">View Menu</a>
+<a class="btn" href="MENU%20.pdf" target="_blank">View Menu</a>
 <a class="btn" href="https://maps.app.goo.gl/bbbar62r5L8fCAz87" target="_blank">Google Review</a>
 <a class="btn" href="https://www.instagram.com/uzbek_restaurant_bali?igsh=NGx0MTR1emJxcThn&utm_source=qr" target="_blank">Instagram</a>
 <a class="btn" href="https://wa.me/6282145823322" target="_blank">Contact Manager</a>
