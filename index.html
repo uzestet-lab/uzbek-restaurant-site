@@ -2,260 +2,296 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>UzBek Restaurant Bali</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#101826">
+<title>Uz&Bek Restaurant Bali</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
 :root{
---bg1:#0f1a2b;
---bg2:#14253d;
---gold:#c6a75e;
+--bg:#0f1724;
+--bg2:#162235;
+--gold:#c9a86a;
+--gold2:#e7c98f;
+--white:#ffffff;
+--glass:rgba(255,255,255,.05);
 }
 
 *{
-box-sizing:border-box;
 margin:0;
 padding:0;
+box-sizing:border-box;
+-webkit-tap-highlight-color:transparent;
+}
+
+html{
+scroll-behavior:smooth;
 }
 
 body{
-font-family:'Inter',sans-serif;
-background:linear-gradient(135deg,var(--bg1),var(--bg2));
+font-family:Inter,sans-serif;
 color:#fff;
 min-height:100vh;
+background:
+radial-gradient(circle at top left, rgba(201,168,106,.10), transparent 30%),
+radial-gradient(circle at bottom right, rgba(201,168,106,.08), transparent 30%),
+linear-gradient(135deg,var(--bg),var(--bg2));
 display:flex;
 justify-content:center;
-padding:24px 16px;
+padding:18px 14px 30px;
 overflow-x:hidden;
-text-align:center;
+animation:bgmove 10s ease-in-out infinite alternate;
 }
 
-body:before,
-body:after{
-content:"";
-position:fixed;
-width:280px;
-height:280px;
-border:1px solid rgba(198,167,94,.10);
-border-radius:50%;
-pointer-events:none;
+@keyframes bgmove{
+from{background-position:0 0,100% 100%,0 0;}
+to{background-position:8% 0,92% 100%,0 0;}
 }
 
-body:before{
-top:-140px;
-left:-140px;
-}
-
-body:after{
-bottom:-140px;
-right:-140px;
-}
-
-.container{
+.wrap{
 width:100%;
 max-width:430px;
-padding:24px 10px 40px;
+text-align:center;
+animation:fadeUp 1s ease forwards;
+}
+
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(18px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+.logo{
+width:88px;
+height:88px;
+margin:10px auto 16px;
+border-radius:50%;
+object-fit:cover;
+box-shadow:0 0 25px rgba(201,168,106,.18);
+animation:logoGlow 2.8s ease-in-out infinite alternate;
+}
+
+@keyframes logoGlow{
+from{transform:scale(1);}
+to{transform:scale(1.03);}
 }
 
 h1{
-font-family:'Playfair Display',serif;
-font-size:46px;
+font-family:"Playfair Display",serif;
+font-size:32px;
 line-height:1.15;
-font-weight:600;
-margin-bottom:16px;
-}
-
-.gold-line{
-width:70px;
-height:1px;
-background:var(--gold);
-margin:0 auto 28px;
-opacity:.8;
-}
-
-.lang-switch{
-display:flex;
-justify-content:center;
-gap:10px;
-margin-bottom:28px;
-flex-wrap:nowrap;
-}
-
-.lang-switch button{
-border:1px solid var(--gold);
-background:transparent;
-color:#fff;
-padding:9px 18px;
-border-radius:22px;
-font-size:14px;
-cursor:pointer;
-}
-
-.lang-switch button.active{
-background:var(--gold);
-color:var(--bg1);
-font-weight:600;
-}
-
-.text{
-font-size:20px;
-line-height:1.9;
-opacity:.95;
-margin-bottom:28px;
-}
-
-.hidden{
-display:none;
-}
-
-.button{
-display:block;
-text-decoration:none;
-color:#fff;
-border:1px solid var(--gold);
-padding:16px;
-border-radius:10px;
-margin-bottom:16px;
-font-size:18px;
-transition:.2s;
-}
-
-.button:active,
-.button:hover{
-background:rgba(198,167,94,.12);
-}
-
-.wifi{
-margin:28px auto 0;
-padding:20px;
-border:1px solid rgba(198,167,94,.65);
-border-radius:14px;
-background:rgba(255,255,255,.04);
-max-width:340px;
-}
-
-.wifi .icon{
-font-size:28px;
-margin-bottom:8px;
-}
-
-.wifi .title{
-font-size:26px;
-font-weight:600;
+letter-spacing:.4px;
 margin-bottom:14px;
 }
 
-.wifi .label{
-font-size:14px;
-opacity:.75;
-margin-top:10px;
+.line{
+width:72px;
+height:1px;
+background:linear-gradient(90deg,transparent,var(--gold),transparent);
+margin:0 auto 22px;
 }
 
-.wifi .value{
-font-size:22px;
-font-weight:600;
-line-height:1.35;
+.langs{
+display:flex;
+justify-content:center;
+gap:7px;
+flex-wrap:wrap;
+margin-bottom:18px;
 }
 
-.footer{
-margin-top:30px;
-font-size:14px;
-opacity:.75;
-letter-spacing:1px;
+.langs button{
+border:1px solid rgba(201,168,106,.55);
+background:transparent;
+color:#fff;
+padding:7px 12px;
+border-radius:20px;
+font-size:12px;
+font-weight:500;
+cursor:pointer;
+transition:.25s;
 }
 
-@media (max-width:430px){
-h1{
-font-size:34px;
+.langs button.active,
+.langs button:hover{
+background:var(--gold);
+color:#0f1724;
 }
 
 .text{
-font-size:16px;
+font-size:15px;
 line-height:1.8;
+opacity:.92;
+margin-bottom:22px;
+animation:fadeText 1.2s ease;
 }
 
-.button{
-font-size:17px;
-padding:15px;
+@keyframes fadeText{
+from{opacity:0}
+to{opacity:.92}
 }
 
-.wifi .title{
-font-size:22px;
+.hidden{display:none;}
+
+.btn{
+display:block;
+text-decoration:none;
+color:#fff;
+padding:15px 16px;
+border-radius:12px;
+margin-bottom:14px;
+border:1px solid rgba(201,168,106,.55);
+background:var(--glass);
+backdrop-filter:blur(6px);
+font-size:15px;
+font-weight:500;
+transition:.25s;
+box-shadow:0 0 0 rgba(201,168,106,0);
 }
 
-.wifi .value{
-font-size:20px;
+.btn:hover,
+.btn:active{
+transform:translateY(-1px);
+background:rgba(201,168,106,.10);
+box-shadow:0 0 18px rgba(201,168,106,.20);
 }
+
+.wifi{
+margin-top:18px;
+padding:18px;
+border-radius:14px;
+border:1px solid rgba(201,168,106,.45);
+background:rgba(255,255,255,.04);
+animation:wifiIn 1.4s ease;
+}
+
+@keyframes wifiIn{
+from{opacity:0;transform:translateY(12px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+.wifi .t{
+font-size:21px;
+font-weight:600;
+margin-bottom:10px;
+}
+
+.small{
+font-size:13px;
+opacity:.7;
+margin-top:8px;
+}
+
+.big{
+font-size:18px;
+font-weight:600;
+margin-top:4px;
+}
+
+.footer{
+margin-top:22px;
+font-size:12px;
+letter-spacing:1px;
+opacity:.62;
+}
+
+@media(max-width:430px){
+h1{font-size:28px;}
+.text{font-size:14px;}
+.btn{font-size:14px;padding:14px;}
+.logo{width:80px;height:80px;}
 }
 </style>
 </head>
-
 <body>
 
-<div class="container">
+<div class="wrap">
 
-<h1>UzBek<br>Restaurant<br>Bali</h1>
+<img class="logo" src="https://i.imgur.com/J6YV9rR.jpeg" alt="logo">
 
-<div class="gold-line"></div>
+<h1>Uz&Bek Restaurant Bali</h1>
+<div class="line"></div>
 
-<div class="lang-switch">
-<button id="btn-en" class="active" onclick="setLang('en')">EN</button>
-<button id="btn-ru" onclick="setLang('ru')">RU</button>
-<button id="btn-id" onclick="setLang('id')">ID</button>
+<div class="langs">
+<button id="buz" onclick="setLang('uz')">UZ</button>
+<button id="bru" onclick="setLang('ru')">RU</button>
+<button id="ben" onclick="setLang('en')">EN</button>
+<button id="bid" onclick="setLang('id')">ID</button>
+<button id="bzh" onclick="setLang('zh')">中文</button>
 </div>
 
-<div id="en" class="text">
-Thank you sincerely for visiting our restaurant.<br><br>
-If your experience was enjoyable, we would be grateful for an honest review — it helps future guests discover us.<br><br>
-You are warmly invited to follow us on Instagram or contact the restaurant manager directly.
+<div id="uz" class="text hidden">
+Restoranimizga tashrif buyurganingiz uchun rahmat.<br><br>
+Agar sizga yoqqan bo‘lsa, halol fikr bildirishingiz biz uchun muhim.<br><br>
+Instagram sahifamizga obuna bo‘ling yoki menejer bilan bog‘laning.
 </div>
 
 <div id="ru" class="text hidden">
-Искренне благодарим вас за визит в наш ресторан.<br><br>
-Если вам понравилось, будем признательны за честный отзыв — это помогает другим гостям узнать о нас.<br><br>
-Вы также можете подписаться на Instagram или связаться напрямую с управляющим ресторана.
+Благодарим вас за визит в наш ресторан.<br><br>
+Если вам понравилось, будем признательны за честный отзыв.<br><br>
+Вы можете подписаться на Instagram или связаться с менеджером.
+</div>
+
+<div id="en" class="text hidden">
+Thank you sincerely for visiting our restaurant.<br><br>
+If you enjoyed your experience, we would appreciate your review.<br><br>
+Follow us on Instagram or contact the manager directly.
 </div>
 
 <div id="id" class="text hidden">
-Terima kasih atas kunjungan Anda ke restoran kami.<br><br>
-Jika pengalaman Anda menyenangkan, kami akan sangat menghargai ulasan jujur — ini membantu tamu lain menemukan kami.<br><br>
-Anda juga dipersilakan mengikuti Instagram kami atau menghubungi manajer restoran secara langsung.
+Terima kasih telah mengunjungi restoran kami.<br><br>
+Jika Anda puas, kami akan menghargai ulasan Anda.<br><br>
+Ikuti Instagram kami atau hubungi manajer.
 </div>
 
-<a class="button" href="https://maps.app.goo.gl/bbbar62r5L8fCAz87" target="_blank">Google Review</a>
+<div id="zh" class="text hidden">
+感谢您光临我们的餐厅。<br><br>
+如果您喜欢这里，欢迎留下评价。<br><br>
+欢迎关注我们的 Instagram 或联系经理。
+</div>
 
-<a class="button" href="https://www.instagram.com/uzbek_restaurant_bali" target="_blank">Instagram</a>
-
-<a class="button" href="https://wa.me/6282145823322" target="_blank">Contact Manager (WhatsApp)</a>
+<a class="btn" href="MENU.pdf" target="_blank">📋 View Menu</a>
+<a class="btn" href="https://maps.app.goo.gl/bbbar62r5L8fCAz87" target="_blank">⭐ Google Review</a>
+<a class="btn" href="https://www.instagram.com/uzbek_restaurant_bali?igsh=NGx0MTR1emJxcThn&utm_source=qr" target="_blank">📷 Instagram</a>
+<a class="btn" href="https://wa.me/6282145823322" target="_blank">📞 Contact Manager</a>
 
 <div class="wifi">
-<div class="icon">📶</div>
-<div class="title">Guest WiFi</div>
+<div class="t">📶 Guest WiFi</div>
 
-<div class="label">Network</div>
-<div class="value">Uz&Bek Restoran</div>
+<div class="small">Network</div>
+<div class="big">Uz&Bek Restoran</div>
 
-<div class="label">Password</div>
-<div class="value">12345678</div>
+<div class="small">Password</div>
+<div class="big">12345678</div>
 </div>
 
 <div class="footer">
-With warmth and respect
+WITH WARMTH & RESPECT
 </div>
 
 </div>
 
 <script>
-function setLang(lang){
-['en','ru','id'].forEach(l=>{
-document.getElementById(l).classList.add('hidden');
-document.getElementById('btn-'+l).classList.remove('active');
+function setLang(l){
+['uz','ru','en','id','zh'].forEach(x=>{
+document.getElementById(x).classList.add('hidden');
+document.getElementById('b'+x).classList.remove('active');
 });
-document.getElementById(lang).classList.remove('hidden');
-document.getElementById('btn-'+lang).classList.add('active');
+document.getElementById(l).classList.remove('hidden');
+document.getElementById('b'+l).classList.add('active');
 }
+
+function autoLang(){
+let lang=(navigator.language||'en').toLowerCase();
+
+if(lang.includes('ru')) setLang('ru');
+else if(lang.includes('uz')) setLang('uz');
+else if(lang.includes('id')) setLang('id');
+else if(lang.includes('zh')) setLang('zh');
+else setLang('en');
+}
+autoLang();
 </script>
 
 </body>
