@@ -43,12 +43,25 @@ max-width:430px;
 text-align:center;
 }
 
-.logo,.title,.line,.langs,.btn,.wifi,.footer{
+.logo,.title,.line,.langs,.wifi,.footer{
   opacity:0;
   transform:translateY(-18px);
   animation:dropFade 1s ease forwards;
 }
 
+.btn{
+  opacity:0;
+  transform:translateY(-18px);
+  animation:dropFade 1s ease forwards;
+  -webkit-tap-highlight-color: transparent;
+  transition: all 0.2s ease;
+  color:#ffffff;
+}
+.text{
+  opacity:0;
+  transform:translateY(-18px);
+  animation:dropFade 1s ease forwards;
+}
 .text{
   opacity:0;
   transform:translateY(-18px);
@@ -323,7 +336,19 @@ document.getElementById("wifiTitle").innerHTML=labels[lang][4];
 document.getElementById("footer").innerHTML=labels[lang][5];
 }
 
-window.onload=function(){
+window.onload = function(){
+  var lang = (navigator.language || navigator.userLanguage || "en").toLowerCase();
+
+  if(lang.includes("ru")){
+    setLang("ru");
+  } else if(lang.includes("id")){
+    setLang("id");
+  } else if(lang.includes("uz")){
+    setLang("uz");
+  } else {
+    setLang("en");
+  }
+};
 var l=(navigator.language||"en").toLowerCase();
 
 if(l.indexOf("uz")>-1){setLang("uz");}
