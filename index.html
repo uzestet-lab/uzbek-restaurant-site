@@ -52,8 +52,7 @@ animation:dropFade 1s ease forwards;
 .logo{animation-delay:.2s;}
 .title{animation-delay:.6s;}
 .line{animation-delay:.95s;}
-.langs{animation-delay:1.25s;}
-.text{animation-delay:1.6s;}
+.langs{animation-delay:1.25s;}  
 #btn1{animation-delay:1.9s;}   /* Menu */
 #btn3{animation-delay:2.15s;}  /* Instagram */
 #btn2{animation-delay:2.4s;}   /* Maps */
@@ -61,7 +60,16 @@ animation:dropFade 1s ease forwards;
 #btn4{animation-delay:2.9s;}   /* WhatsApp */
 .wifi{animation-delay:3.15s;}
 .footer{animation-delay:3.45s;}
+.tline{
+  opacity:0;
+  transform:translateY(-18px);
+  animation:dropFade 1s ease forwards;
+}
 
+.t1{ animation-delay:1.6s; }
+.t2{ animation-delay:1.9s; }
+.t3{ animation-delay:2.2s; }
+.t4{ animation-delay:2.5s; }
 @keyframes dropFade{
 to{
 opacity:1;
@@ -235,10 +243,10 @@ padding-bottom:20px;
 </div>
 
 <div id="uz" class="text">
-Restoranimizga tashrif buyurganingiz uchun rahmat.<br><br>
-Agar sizga yoqqan bo‘lsa, Google Maps’da sharh qoldirsangiz minnatdor bo‘lamiz.<br><br>
-Instagram sahifamizga obuna bo‘lishingizdan mamnun bo‘lamiz.<br><br>
-Zarurat bo‘lsa boshqaruvchi bilan bog'lanishingiz mumkin.
+  <div class="tline t1">Restoranimizga tashrif buyurganingiz uchun rahmat.</div>
+  <div class="tline t2">Agar sizga yoqqan bo‘lsa, Google Maps’da fikr qoldirsangiz minnatdor bo‘lamiz.</div>
+  <div class="tline t3">Instagram’da bizni kuzatib borishingizdan mamnun bo‘lamiz.</div>
+  <div class="tline t4">Zarurat bo‘lsa, menejer bilan bog‘lanishingiz mumkin.</div>
 </div>
 
 <div id="ru" class="text">
@@ -255,7 +263,7 @@ Zarurat bo‘lsa boshqaruvchi bilan bog'lanishingiz mumkin.
   <div class="tline t4">You may contact the manager if needed.</div>
 </div>
 
-<<div id="id" class="text">
+<div id="id" class="text">
   <div class="tline t1">Terima kasih telah mengunjungi restoran kami.</div>
   <div class="tline t2">Jika Anda menikmati pengalaman Anda, kami akan sangat menghargai ulasan Anda di Google Maps.</div>
   <div class="tline t3">Kami akan senang jika Anda mengikuti kami di Instagram.</div>
