@@ -316,7 +316,15 @@ else if(l.indexOf("ru")>-1){setLang("ru");}
 else if(l.indexOf("id")>-1){setLang("id");}
 else{setLang("en");}
 };
-  
+<script id="haptic1">
+document.querySelectorAll('.btn').forEach(function(button) {
+  button.addEventListener('click', function() {
+    if (navigator.vibrate) {
+      navigator.vibrate(10);
+    }
+  });
+});
+</script>
 </script>
 
 </body>
