@@ -322,50 +322,43 @@ else if(l.indexOf("ru")>-1){setLang("ru");}
 else if(l.indexOf("id")>-1){setLang("id");}
 else{setLang("en");}
 };
-window.addEventListener('load', function(){
 
-  function typeText(element, speed, delay){
-    const text = element.innerText;
-    element.innerText = "";
-    element.style.opacity = 1;
+function animateText(){
 
-    let i = 0;
+const lines=document.querySelectorAll('.text.active .tline');
 
-    setTimeout(() => {
+lines.forEach((line,index)=>{
 
-      const interval = setInterval(() => {
+line.style.opacity="0";
+line.style.transform="translateY(-18px)";
 
-        if(i < text.length){
-          element.innerText += text.charAt(i);
-          i++;
-        } else {
-          clearInterval(interval);
-        }
+setTimeout(()=>{
 
-      }, speed);
+line.style.transition="all 0.8s ease";
+line.style.opacity="1";
+line.style.transform="translateY(0)";
 
-    }, delay);
-  }
+},index*500);
 
-  const lines = document.querySelectorAll('.tline');
-
-  if(lines.length >= 4){
-
-const activeText = document.querySelectorAll('.text.active .tline');
-
-if(activeText.length >= 4){
-
-typeText(activeText[0], 25, 0);
-typeText(activeText[1], 25, 1200);
-typeText(activeText[2], 25, 2400);
-typeText(activeText[3], 25, 3600);
+});
 
 }
 
-  }
+window.onload=function(){
 
-});
-</script>
+var l=(navigator.language||"en").toLowerCase();
+
+if(l.indexOf("uz")>-1){setLang("uz");}
+else if(l.indexOf("ru")>-1){setLang("ru");}
+else if(l.indexOf("id")>-1){setLang("id");}
+else{setLang("en");}
+
+setTimeout(()=>{
+animateText();
+},300);
+
+}
+  </script>
     
 
 </body>
