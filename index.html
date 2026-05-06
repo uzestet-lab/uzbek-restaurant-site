@@ -61,16 +61,66 @@ animation:dropFade 1s ease forwards;
 .wifi{animation-delay:3.15s;}
 .footer{animation-delay:3.45s;}
 .tline{
-  opacity:0;
-  transform:translateY(-18px);
-  animation:dropFade 1s ease forwards;
+  display:block;
+  overflow:hidden;
+  white-space:nowrap;
+  width:0;
+  opacity:1;
+  margin:18px auto;
+  border-right:2px solid rgba(255,255,255,0.75);
 }
 
-.t1{ animation-delay:1.6s; }
-.t2{ animation-delay:1.9s; }
-.t3{ animation-delay:2.2s; }
-.t4{ animation-delay:2.5s; }
+.t1{
+  animation:
+  typing1 2s steps(40,end) forwards,
+  blink .8s step-end infinite;
+  animation-delay:1.5s;
+}
 
+.t2{
+  animation:
+  typing2 2.5s steps(65,end) forwards,
+  blink .8s step-end infinite;
+  animation-delay:4s;
+}
+
+.t3{
+  animation:
+  typing3 2s steps(45,end) forwards,
+  blink .8s step-end infinite;
+  animation-delay:7s;
+}
+
+.t4{
+  animation:
+  typing4 2.2s steps(55,end) forwards,
+  blink .8s step-end infinite;
+  animation-delay:9.5s;
+}
+
+@keyframes typing1{
+  from{ width:0 }
+  to{ width:38ch }
+}
+
+@keyframes typing2{
+  from{ width:0 }
+  to{ width:62ch }
+}
+
+@keyframes typing3{
+  from{ width:0 }
+  to{ width:42ch }
+}
+
+@keyframes typing4{
+  from{ width:0 }
+  to{ width:55ch }
+}
+
+@keyframes blink{
+  50%{ border-color:transparent; }
+}
 @keyframes dropFade{
 to{
 opacity:1;
