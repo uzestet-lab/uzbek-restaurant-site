@@ -351,10 +351,16 @@ window.addEventListener('load', function(){
 
   if(lines.length >= 4){
 
-    typeText(lines[0], 25, 0);
-    typeText(lines[1], 25, 1200);
-    typeText(lines[2], 25, 2400);
-    typeText(lines[3], 25, 3600);
+const activeText = document.querySelectorAll('.text.active .tline');
+
+if(activeText.length >= 4){
+
+typeText(activeText[0], 25, 0);
+typeText(activeText[1], 25, 1200);
+typeText(activeText[2], 25, 2400);
+typeText(activeText[3], 25, 3600);
+
+}
 
   }
 
