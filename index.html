@@ -322,34 +322,45 @@ else if(l.indexOf("ru")>-1){setLang("ru");}
 else if(l.indexOf("id")>-1){setLang("id");}
 else{setLang("en");}
 };
-function typeText(element, speed, delay){
-  const text = element.innerText;
-  element.innerText = "";
-  element.style.opacity = 1;
+window.addEventListener('load', function(){
 
-  let i = 0;
+  function typeText(element, speed, delay){
+    const text = element.innerText;
+    element.innerText = "";
+    element.style.opacity = 1;
 
-  setTimeout(() => {
-    const interval = setInterval(() => {
-      element.innerText += text[i];
-      i++;
+    let i = 0;
 
-      if(i >= text.length){
-        clearInterval(interval);
-      }
-    }, speed);
-  }, delay);
-}
+    setTimeout(() => {
 
-setTimeout(() => {
+      const interval = setInterval(() => {
+
+        if(i < text.length){
+          element.innerText += text.charAt(i);
+          i++;
+        } else {
+          clearInterval(interval);
+        }
+
+      }, speed);
+
+    }, delay);
+  }
+
   const lines = document.querySelectorAll('.tline');
 
-  typeText(lines[0], 25, 0);
-  typeText(lines[1], 25, 1200);
-  typeText(lines[2], 25, 2400);
-  typeText(lines[3], 25, 3600);
-}, 1200);  
+  if(lines.length >= 4){
+
+    typeText(lines[0], 25, 0);
+    typeText(lines[1], 25, 1200);
+    typeText(lines[2], 25, 2400);
+    typeText(lines[3], 25, 3600);
+
+  }
+
+});
 </script>
+    
 
 </body>
 </html>
